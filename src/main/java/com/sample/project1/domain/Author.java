@@ -1,6 +1,7 @@
 package com.sample.project1.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,15 +16,14 @@ public class Author {
     private String lastname;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }
 
-    public Author(String firstName, String lastname, Set<Book> books) {
+    public Author(String firstName, String lastname) {
         this.firstName = firstName;
         this.lastname = lastname;
-        this.books = books;
     }
 
     public Set<Book> getBooks() {
@@ -34,10 +34,7 @@ public class Author {
         this.books = books;
     }
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "firstName='" + firstName + '\'' +
+
     public Long getId() {
         return id;
     }
@@ -62,13 +59,6 @@ public class Author {
         this.lastname = lastname;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
 
     @Override
     public String toString() {
