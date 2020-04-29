@@ -21,4 +21,10 @@ public class BookController {
 
         return "books/list";
     }
+
+    @RequestMapping(value = "/")
+    public String getBooks(){
+
+        return "landing";
+    }
 }
